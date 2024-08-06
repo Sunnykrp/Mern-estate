@@ -25,3 +25,15 @@ app.use(express.json());
 
 app.use('/server/user',userRouter);
 app.use('/server/user',authRouter);
+
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    const statuscode = err.statuscode || 500;
+    const message = err.message || 'Internal Server Error';
+    return res.status(statuscode).json({
+      success: false,
+      statuscode,
+      message,
+    });
+  });
