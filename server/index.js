@@ -24,7 +24,7 @@ app.listen(3000,()=>
 app.use(express.json());
 
 app.use('/server/user',userRouter);
-app.use('/server/user',authRouter);
+app.use('/server/auth',authRouter);
 
 
 // Error handling middleware
